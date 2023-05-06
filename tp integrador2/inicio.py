@@ -26,10 +26,10 @@ if __name__=='__main__':
             alumnos.append([dni, apellido, nombre, carrera, anio])
 
     archivo.close()
-    # Convertir la lista en un arreglo NumPy
+
     alumnos_np = np.array(alumnos)
 
-    # Imprimir el arreglo NumPy
+   
     print(alumnos_np)
     print("----------------------------------------------------------------")
     print("EJERCICIO 2")
@@ -56,15 +56,12 @@ if __name__=='__main__':
     menu=(input("Elegir opcion: \n a-Ingresar DNI para calcular promedio con y sin aplazo \n b- Ingresar nombre de una materia \n c- Obtener un listado de alumnos ordenado\n"))
     while menu != "z":
         if menu =="a":
-            #a. Leer por teclado el número de dni de un alumno, e informar su promedio con aplazos y sin aplazos. 
+   
             print("EJERCICIO 3")
             print("Inicio APARTADO A")
             print("\n")
 
-            xdni= int(input("Ingresar un numero de DNI: "))#dni q se quiere buscar
-            #np.where busca los indices donde se cumple la condicion
-            #en este caso la condicion que se tiene que cumplir es la de que el dni ingresado coincida
-            #con uno del archivo
+            xdni= int(input("Ingresar un numero de DNI: "))
 
             indices = np.where(alumnos_np[:,0] == str(xdni))
 
@@ -74,7 +71,7 @@ if __name__=='__main__':
                 i = indices[0][0]
                 alumno_encontrado = alumnos_np[i]
 
-               # Imprimir los datos del alumno encontrado en el array
+               
                 print("Datos del alumno encontrado:")
                 print(f"DNI: {alumno_encontrado[0]}")
                 print(f"Apellido: {alumno_encontrado[1]}")
@@ -82,7 +79,6 @@ if __name__=='__main__':
                 print(f"Carrera: {alumno_encontrado[3]}")
                 print(f"Año de carrera: {alumno_encontrado[4]}") 
 
-            #metodo que lleva a la lista en la clase manejador
             newLista.busqueda(xdni)
 
 
@@ -91,7 +87,7 @@ if __name__=='__main__':
             print("EJERCICIO 3")
             print("Inicio APARTADO B")
             print("\n")
-            # Obtener DNI de un alumno que aprobó una materia
+        
             materia = input("Ingresar nombre de una materia: ")
             dni_aprobado = newLista.aprobadoDni(materia)
             nota_aprobado = newLista.aprobadoNota(materia)

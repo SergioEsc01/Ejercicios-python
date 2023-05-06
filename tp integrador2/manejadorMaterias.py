@@ -1,4 +1,3 @@
-#2) Cargar los datos de las materias aprobadas en un Manejador de Materias, implementado usando una lista Python. 
 import csv
 from materias import Materias
 from manejadorAlumnos import Alumno
@@ -9,7 +8,6 @@ class Manejador:
     def __init__(self):
         self.__lista=[]
 
-   #Carga un nuevo empleado en la lista
     def cargarMateria(self,doc,nombre,fecha,nota,apr):
  
         newMateria = Materias(doc,nombre,fecha,nota,apr)
