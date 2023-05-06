@@ -24,34 +24,35 @@ class listaV:
             if v.getmillas()==valor:
                 print("Las millas del viajero {} son iguales a las millas ingresadas {}".format(v.getnum(),valor))
             else:
-                print("Las millas del viajero {} no son iguales a ls millas ingresadas {}".format(v.getnum(),valor))
+                print("Las millas del viajero {} no son iguales a las millas ingresadas {}".format(v.getnum(),valor))
     def compara2(self,valor):
         for v in self.__lista:
             if valor==v.getmillas():
                 print("Las millas del viajero {} son iguales a las millas ingresadas {}".format(v.getnum(),valor))
             else:
                 print("Las millas del viajero {} no son iguales a ls millas ingresadas {}".format(v.getnum(),valor))
-    def acummillas(self,valor2):
+    def acummillas(self):
         c=0
+        v=0
         while c < len(self.__lista):
-            id=self.__lista[c].getnum()
-            doc=self.__lista[c].getdoc()
-            nom=self.__lista[c].getnom()
-            ap=self.__lista[c].getap()
             valor=self.__lista[c].getmillas()
-            v=Viajero(id,doc,nom,ap,valor)
-            v= valor2 + v
+            v+= valor
             c+=1
-            print("Instancia de la clase Viajero id:{}\ndni{}\nnombre{}\napellido{}\nmillas{}\n".format(v.getnum(),v.getdoc(),v.getnom(),v.getap(),v.getmillas()))
-    def restamillas(self,valor2):
+        print("Las millas acumuladas son: {}\n".format(v))
+    def restamillas(self,valor2,pos):
         c=0
-        while c < len(self.__lista):
-            id=self.__lista[c].getnum()
-            doc=self.__lista[c].getdoc()
-            nom=self.__lista[c].getnom()
-            ap=self.__lista[c].getap()
-            valor=self.__lista[c].getmillas()
-            v=Viajero(id,doc,nom,ap,valor)
-            v= valor2 - v
-            c+=1
-            print("Instancia de la clase Viajero id:{}\ndni{}\nnombre{}\napellido{}\nmillas{}\n".format(v.getnum(),v.getdoc(),v.getnom(),v.getap(),v.getmillas()))
+        band=True
+        while c < len(self.__lista) and band==True:
+            if self.__lista[c].getnum()==pos:
+                id=self.__lista[c].getnum()
+                doc=self.__lista[c].getdoc()
+                nom=self.__lista[c].getnom()
+                ap=self.__lista[c].getap()
+                valor=self.__lista[c].getmillas()
+                v=Viajero(id,doc,nom,ap,valor)
+                v= valor2 - v
+                band=False
+                print("Instancia de la clase Viajero id:{}\ndni{}\nnombre{}\napellido{}\nmillas{}\n".format(v.getnum(),v.getdoc(),v.getnom(),v.getap(),v.getmillas()))
+            else:
+                c+=1
+                print("No se encontro el viajero\n")

@@ -19,27 +19,29 @@ class listaV:
             else:
                 print("El viajero {} no tiene ms mills que el viajero {}".format(self.__lista[c].getnum(),self.__lista[c+1].getnum()))
                 c +=1
-    def acummillas(self,valor2):
+    def acummillas(self):
         c=0
+        v=0
         while c < len(self.__lista):
-            id=self.__lista[c].getnum()
-            doc=self.__lista[c].getdoc()
-            nom=self.__lista[c].getnom()
-            ap=self.__lista[c].getap()
             valor=self.__lista[c].getmillas()
-            v=Viajero(id,doc,nom,ap,valor)
-            v= v + valor2
+            v+= valor
             c+=1
-            print("Instancia de la clase Viajero id:{}\ndni{}\nnombre{}\napellido{}\nmillas{}\n".format(v.getnum(),v.getdoc(),v.getnom(),v.getap(),v.getmillas()))
-    def restamillas(self,valor2):
+        print("Las millas acumuladas son: {}\n".format(v))
+    def restamillas(self,valor2,pos):
         c=0
-        while c < len(self.__lista):
-            id=self.__lista[c].getnum()
-            doc=self.__lista[c].getdoc()
-            nom=self.__lista[c].getnom()
-            ap=self.__lista[c].getap()
-            valor=self.__lista[c].getmillas()
-            v=Viajero(id,doc,nom,ap,valor)
-            v= v - valor2
-            c+=1
-            print("Instancia de la clase Viajero id:{}\ndni{}\nnombre{}\napellido{}\nmillas{}\n".format(v.getnum(),v.getdoc(),v.getnom(),v.getap(),v.getmillas()))
+        band=True
+        while c < len(self.__lista) and band==True:
+            if self.__lista[c].getnum()==pos:
+                id=self.__lista[c].getnum()
+                doc=self.__lista[c].getdoc()
+                nom=self.__lista[c].getnom()
+                ap=self.__lista[c].getap()
+                valor=self.__lista[c].getmillas()
+                v=Viajero(id,doc,nom,ap,valor)
+                v= v - valor2
+                band=False
+                print("Instancia de la clase Viajero id:{}\ndni{}\nnombre{}\napellido{}\nmillas{}\n".format(v.getnum(),v.getdoc(),v.getnom(),v.getap(),v.getmillas()))
+            else:
+                c+=1
+                print("No se encontro el viajero")
+            
